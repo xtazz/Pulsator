@@ -19,6 +19,22 @@ open class Pulsator: CAReplicatorLayer, CAAnimationDelegate {
     fileprivate var animationGroup: CAAnimationGroup!
     fileprivate var alpha: CGFloat = 0.45
 
+    open override var borderWidth: CGFloat {
+        willSet(newValue) {
+            pulse.borderWidth = newValue
+            
+            recreate()
+        }
+    }
+
+    open override var borderColor: CGColor? {
+        willSet(newValue) {
+            pulse.borderColor = newValue
+            
+            recreate()
+        }
+    }
+    
     override open var backgroundColor: CGColor? {
         didSet {
             pulse.backgroundColor = backgroundColor
